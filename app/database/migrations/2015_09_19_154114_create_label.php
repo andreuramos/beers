@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableBeers extends Migration {
+class CreateLabel extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,9 @@ class CreateTableBeers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('beer',function(Blueprint $table){
+		Schema::create('label',function(Blueprint $table){
 			$table->increments('id');
 			$table->string('name');
-			$table->string('album')->nullable();
-			$table->integer('page')->nullable();
-			$table->integer('position')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -29,7 +26,7 @@ class CreateTableBeers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('beers');
+		Schema::drop('label');
 	}
 
 }

@@ -15,6 +15,7 @@ class CreateTableBrewer extends Migration {
 		Schema::create('brewer',function(Blueprint $table){
 			$table->increments('id');
 			$table->string('name');
+			$table->string('url');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +27,7 @@ class CreateTableBrewer extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('brewer');
 	}
 
 }
