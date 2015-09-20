@@ -15,9 +15,32 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function index()
 	{
-		return View::make('hello');
+		return View::make('frontend.home');
+	}
+
+	public function login(){
+		return View::make('frontend.login');
+	}
+
+	public function dologin(){
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$user = User::where('email',$email)->first();
+		if(!$user) return Redirect::back();
+
+		if (Hash::check($password,$user->password)) {
+			Auth::login($user);
+			return Redirect::intended('dashboard');
+		}
+		return Redirect::back();
+
+	}
+
+	public function logout(){
+		Auth::logout();
+		return Redirect::to('/');
 	}
 
 }

@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/', 'HomeController@index');
+Route::get('login','HomeController@login');
+Route::post('dologin','HomeController@dologin');
+Route::get('logout','HomeController@logout');
+
+
+Route::group(['prefix'=>'dashboard'],function(){
+    Route::get('/','DashboardController@index');
 });
