@@ -1,5 +1,6 @@
 <?php
 
 class Style extends \Eloquent {
-	protected $fillable = [];
+	protected $table = "style";
+	protected $fillable = ['name','description','style_id'];
 }
