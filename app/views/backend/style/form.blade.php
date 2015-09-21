@@ -1,4 +1,4 @@
-<form>
+<form class="contact">
     <div class="form-group">
         <label for="name">Name</label>
         <input class="form_control" id="name" name="name">

@@ -1,6 +1,6 @@
 @extends('backend.layout')
 @section('content')
-    
+
     <h1>Styles</h1>
     <!-- list -->
     @forelse($styles as $style)

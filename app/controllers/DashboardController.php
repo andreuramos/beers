@@ -10,14 +10,19 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-		echo "Welcome to the dashboard";
 		return View::make('backend.home');
+	}
+
+	public function brewers(){
+		$brewers = Brewer::all();
+		return View::make('backend.brewer.index',['brewers'=>$brewers]);
 	}
 
 	public function styles(){
 		$styles = Style::all();
 		return View::make('backend.style.index',['styles'=>$styles]);
 	}
+
+
 
 }

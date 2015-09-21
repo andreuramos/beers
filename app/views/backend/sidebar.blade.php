@@ -9,7 +9,7 @@
             <a href="#"><i class="fa fa-beer"></i>&nbsp; Beers</a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-industry"></i>&nbsp; Brewers</a>
+            <a href="{{URL::to('dashboard/brewers')}}"><i class="fa fa-industry"></i>&nbsp; Brewers</a>
         </li>
         <li>
             <a href="#"><i class="fa fa-globe"></i>&nbsp; Localities</a>
