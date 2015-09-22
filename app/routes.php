@@ -17,9 +17,13 @@ Route::post('dologin','HomeController@dologin');
 Route::get('logout','HomeController@logout');
 
 
-Route::group(['prefix'=>'dashboard'],function(){
+Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
     Route::get('/','DashboardController@index');
     Route::get('/brewers','DashboardController@brewers');
     Route::get('/styles','DashboardController@styles');
+    Route::post('/styles/save','DashboardController@saveStyle');
 
+    Route::group(['prefix'=>'ajax'],function(){
+        Route::get('style-autocomplete/{term}','AjaxController@styleAutocomplete');
+    });
 });
