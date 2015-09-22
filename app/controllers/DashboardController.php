@@ -18,7 +18,10 @@ class DashboardController extends \BaseController {
 	 * @return View
 	 */
 	public function styles(){
-		$styles = Style::all();
+		$styles = [];
+		foreach(Style::all() as $style){
+			$styles[] = Style::find($style->id);
+		}
 		return View::make('backend.style.index',['styles'=>$styles]);
 	}
 
@@ -43,6 +46,9 @@ class DashboardController extends \BaseController {
 		return Redirect::back()->withMessage('Style created correctly');
 	}
 
-
+	public function deleteStyle($id){
+		Style::find($id)->delete();
+		return Redirect::back();
+	}
 
 }

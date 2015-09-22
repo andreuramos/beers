@@ -7,14 +7,14 @@
 
 {{Form::open(['url'=>URL::to('/dashboard/styles/save'),'method'=>"post",'class'=>"form-hotizontal"])}}
 {{--<form class="form-horizontal" id="style_form" method="POST" url="{}}">--}}
-    {{Form::hidden('style_id')}}
+    {{Form::hidden('style_id','',['id'=>"style_id"])}}
     <div class="form-group">
         <label class="control-label" for="name">Name</label>
-        <input class="form-control" id="name" name="name" required>
+        <input class="form-control" id="name" name="name" required value="{{$style->name}}">
     </div>
     <div class="form-group">
         <label for="parent_style">Parent Style</label>
-        <input class="form-control" id="parent_style" name="parent_style">
+        <input class="form-control" id="parent_style" name="parent_style" value="{{$style->getParentStyleName()}}">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
