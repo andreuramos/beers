@@ -2,25 +2,17 @@
 @section('content')
     {{HTML::script('js/backend/style-index.js')}}
     <h1>Styles</h1><!-- Button trigger modal -->
-    <button type="button" id="new-style" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+    <button type="button" id="new-style" class="btn btn-success" data-toggle="modal" data-target="#myModal">
         New Style
     </button>
 
     <!-- list -->
     @if(count($styles))
-        <ul class="list-group">
-        @foreach($styles as $style)
-            <li class="list-group-item clearfix">
-                <span>{{$style->name}} </span>
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-info" onclick="editStyle({{$style->id}})">Edit</button>
-                    <a href="{{URL::to('/dashboard/styles/delete/'.$style->id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
-                </div>
-            </li>
-        @endforeach
-        </ul>
+        @include('includes.crud_list',['element_name'=>"style",'elements'=>$styles])
     @else
+        <div class="jumbotron">
             <h2>No styles added yet</h2>
+        </div>
     @endif
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="dialog">
