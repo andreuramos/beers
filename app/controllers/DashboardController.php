@@ -14,6 +14,54 @@ class DashboardController extends \BaseController {
 	}
 
 	/**
+	 * Localities index page
+	 * @return View
+	 */
+	public function localities(){
+		$localities = [];
+		foreach(Locality::all() as $locality){
+			$localities[] = Locality::find($locality->id);
+		}
+		return View::make('backend.locality.index',['localities'=>$localities]);
+	}
+
+	/**
+	 * Submit locality form
+	 */
+	public function saveLocality(){
+		if(Input::get('locality_id')!=null){ //edit style
+			$locality = Locality::find(Input::get('locality_id'));
+		}else{//create style
+			$locality = new Locality();
+		}
+		if(Input::get('parent_locality')!=null){
+			$parent_locality = Style::where('name',Input::get('parent_locality'))->first();
+			if($parent_locality) $parent_locality_id=$parent_locality->id;
+		}else $parent_locality_id=null;
+		$locality->name=Input::get('name');
+		$locality->type=Input::get('type');
+		$locality->locality_id = $parent_locality_id;
+		$locality->latitude = Input::get('latitude');
+		$locality->longitude = Input::get('longitude');
+		$locality->save();
+		return Redirect::back()->withMessage('Locality created correctly');
+	}
+
+	/**
+	 * Deletes the speified style
+	 * @param $id
+	 * @return mixed
+	 */
+	public function deleteLocality($id){
+		if(!count(Locality::where('locality_id',$id))) {
+			Locality::find($id)->delete();
+			return Redirect::back()->withMessage('Locality deleted correctly');
+		}else{
+			return Redirect::back()->withMessage("Locality can't be deleted. Delete the child localities first");
+		}
+	}
+
+	/**
 	 * Styles index page
 	 * @return View
 	 */
@@ -46,6 +94,11 @@ class DashboardController extends \BaseController {
 		return Redirect::back()->withMessage('Style created correctly');
 	}
 
+	/**
+	 * Deletes the speified style
+	 * @param $id
+	 * @return mixed
+	 */
 	public function deleteStyle($id){
 		Style::find($id)->delete();
 		return Redirect::back();

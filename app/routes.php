@@ -20,9 +20,19 @@ Route::get('logout','HomeController@logout');
 Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
     Route::get('/','DashboardController@index');
     Route::get('/brewers','DashboardController@brewers');
-    Route::get('/styles','DashboardController@styles');
-    Route::post('/styles/save','DashboardController@saveStyle');
-    Route::get('/styles/delete/{id}','DashboardController@deleteStyle');
+
+    Route::group(['prefix'=>"localities"],function(){
+        Route::get('/','DashboardController@localities');
+        Route::get('/delete/{id}','DashboardController@deleteLocality');
+        Route::post('/save','DashboardController@saveLocality');
+    });
+
+    Route::group(['prefix'=>"styles"],function(){
+        Route::get('/','DashboardController@styles');
+        Route::get('/delete/{id}','DashboardController@deleteStyle');
+        Route::post('/save','DashboardController@saveStyle');
+    });
+
 
     Route::group(['prefix'=>'ajax'],function(){
         Route::get('style-autocomplete/{term}','AjaxController@styleAutocomplete');

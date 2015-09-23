@@ -10,11 +10,11 @@
     {{Form::hidden('style_id','',['id'=>"style_id"])}}
     <div class="form-group">
         <label class="control-label" for="name">Name</label>
-        <input class="form-control" id="name" name="name" required value="{{$style->name}}">
+        <input class="form-control" id="name" name="name" required value="">
     </div>
     <div class="form-group">
         <label for="parent_style">Parent Style</label>
-        <input class="form-control" id="parent_style" name="parent_style" value="{{$style->getParentStyleName()}}">
+        <input class="form-control" id="parent_style" name="parent_style" value="">
     </div>
     <div class="form-group">
         <label for="description">Description</label>

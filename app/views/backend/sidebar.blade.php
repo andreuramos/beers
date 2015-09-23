@@ -12,7 +12,7 @@
             <a href="{{URL::to('dashboard/brewers')}}"><i class="fa fa-industry"></i>&nbsp; Brewers</a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-globe"></i>&nbsp; Localities</a>
+            <a href="{{URL::to('dashboard/localities')}}"><i class="fa fa-globe"></i>&nbsp; Localities</a>
         </li>
         <li>
             <a href="{{URL::to('dashboard/styles')}}"><i class="fa fa-font"></i>&nbsp; Styles</a>
