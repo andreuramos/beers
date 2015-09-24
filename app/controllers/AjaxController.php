@@ -20,6 +20,14 @@ class AjaxController extends \BaseController {
 		]);
 	}
 
+	public function localityAutocomplete($term){
+		$terms = [];
+		foreach(Locality::where('name','like',"%".$term."%")->get() as $locality){
+			$terms[] = $locality->name;
+		}
+		return Response::json($terms);
+	}
+
 	public function styleAutocomplete($term)
 	{
 		$terms = [];
