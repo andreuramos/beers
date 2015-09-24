@@ -33,8 +33,8 @@
         <input class="form-control" id="longitude" name="longitude">
     </div>
     <div class="form-group">
-        <label for="flag">Flag</label>
-        <input type="file" name="flag">
+        <label for="code">Code</label>
+        <input class="form-control" id="code" name="code" value="" placeholder="ISO 3166-1-alpha-2 code">
     </div>
     <button type="submit" class="btn btn-success col-lg-12">Save changes</button>
 {{Form::close()}}

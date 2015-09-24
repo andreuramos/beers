@@ -23,12 +23,7 @@ function editElement(id){
 
 
 $(document).ready(function(){
-    $("#new-locality").click(function(){
-
-        $("#style_id").val("");
-        $("#name").val("");
-        $("#parent_style").val("");
-        $("#description").val("");
-        $("#wikipedia").val("");
+    $("#new-element").click(function(){
+        $("form").find('input').val("");
     })
 });

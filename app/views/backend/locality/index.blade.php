@@ -2,7 +2,7 @@
 @section('content')
     {{HTML::script('js/backend/crud-list-index.js')}}
     <h1><i class="fa fa-globe"></i>&nbsp; Localities</h1><!-- Button trigger modal -->
-    <button type="button" id="new-style" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+    <button type="button" id="new-element" class="btn btn-success" data-toggle="modal" data-target="#myModal">
         New Locality
     </button>
     {{Form::hidden('element_name','locality',['id'=>'element_name'])}}

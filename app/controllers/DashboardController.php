@@ -34,15 +34,17 @@ class DashboardController extends \BaseController {
 		}else{//create style
 			$locality = new Locality();
 		}
+		$parent_locality_id=null;
 		if(Input::get('parent_locality')!=null){
-			$parent_locality = Style::where('name',Input::get('parent_locality'))->first();
+			$parent_locality = Locality::where('name',Input::get('parent_locality'))->first();
 			if($parent_locality) $parent_locality_id=$parent_locality->id;
-		}else $parent_locality_id=null;
+		}
 		$locality->name=Input::get('name');
 		$locality->type=Input::get('type');
 		$locality->locality_id = $parent_locality_id;
 		$locality->latitude = Input::get('latitude');
 		$locality->longitude = Input::get('longitude');
+		$locality->code = Input::get('code');
 		$locality->save();
 		return Redirect::back()->withMessage('Locality created correctly');
 	}
