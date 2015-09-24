@@ -35,6 +35,8 @@ Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
 
 
     Route::group(['prefix'=>'ajax'],function(){
+        Route::get('getlocality/{id}','AjaxController@getLocality');
+
         Route::get('style-autocomplete/{term}','AjaxController@styleAutocomplete');
         Route::get('getstyle/{id}','AjaxController@getStyle');
     });

@@ -6,6 +6,20 @@ class AjaxController extends \BaseController {
 	/* Backend Ajax Functions */
 	/**************************/
 
+	public function getLocality($id){
+		$locality = Locality::find($id);
+		return Response::json([
+			'id'=>$id,
+			'name'=>$locality->name,
+			'parent_locality'=>$locality->locality_id?Locality::find($locality->locality_id)->name:null,
+			'type'=>$locality->type,
+			'latitude'=>$locality->latitude,
+			'longitude'=>$locality->longitude,
+			'flag'=>$locality->flag
+			//...
+		]);
+	}
+
 	public function styleAutocomplete($term)
 	{
 		$terms = [];
