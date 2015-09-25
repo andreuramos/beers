@@ -8,10 +8,6 @@ class DashboardController extends \BaseController {
 		return View::make('backend.home');
 	}
 
-	public function brewers(){
-		$brewers = Brewer::all();
-		return View::make('backend.brewer.index',['brewers'=>$brewers]);
-	}
 
 	/**
 	 * Localities index page

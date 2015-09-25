@@ -19,7 +19,14 @@ Route::get('logout','HomeController@logout');
 
 Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
     Route::get('/','DashboardController@index');
-    Route::get('/brewers','DashboardController@brewers');
+
+    Route::group(['prefix'=>"brewers"],function(){
+        Route::get('/','BrewerController@index');
+        Route::get('/create','BrewerController@create');
+        Route::get('/edit/{id}','BrewerController@edit');
+        Route::get('/delete/{id}','BrewerController@destroy');
+        Route::post('save','BrewerController@store');
+    });
 
     Route::group(['prefix'=>"localities"],function(){
         Route::get('/','DashboardController@localities');

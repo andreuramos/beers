@@ -8,7 +8,13 @@ This include must be called whith the following params
         <li class="list-group-item clearfix">
             <span>{{$element->name}} </span>
             <div class="btn-group pull-right">
-                <button type="button" class="btn btn-info" onclick="editElement({{$element->id}})">Edit</button>
+                @if($element_name=="brewer")
+                    <a href="{{URL::to('/dashboard/'.$element_name.'s/edit/'.$element->id)}}">
+                @endif
+                    <button type="button" class="btn btn-info" @if($element_name!="brewer")onclick="editElement({{$element->id}})"@endif>Edit</button>
+                @if($element_name=="brewer")
+                    </a>
+                @endif
                 <a href="{{URL::to('/dashboard/'.$element_name.'s/delete/'.$element->id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
             </div>
         </li>

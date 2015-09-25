@@ -1,5 +1,6 @@
 <?php
 
 class Image extends \Eloquent {
-	protected $fillable = [];
+	protected $table="image";
+	protected $fillable = ['path','beer_id','brewer_id'];
 }
