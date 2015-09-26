@@ -5,7 +5,7 @@
     }
 </style>
 
-{{Form::open(['url'=>URL::to('/dashboard/localities/save'),'method'=>"post",'class'=>"form-hotizontal"])}}
+{{Form::open(['url'=>URL::to('/dashboard/localities/save'),'method'=>"post",'class'=>"form-hotizontal",'files'=>'true'])}}
 {{--<form class="form-horizontal" id="style_form" method="POST" url="{}}">--}}
     {{Form::hidden('locality_id','',['id'=>"locality_id"])}}
     <div class="form-group">
@@ -33,8 +33,9 @@
         <input class="form-control" id="longitude" name="longitude">
     </div>
     <div class="form-group">
-        <label for="code">Code</label>
-        <input class="form-control" id="code" name="code" value="" placeholder="ISO 3166-1-alpha-2 code">
+        <label for="flag">Flag</label>
+        {{Form::file('flag',['id'=>'flag'])}}
+        {{HTML::image('')}}
     </div>
     <button type="submit" class="btn btn-success col-lg-12">Save changes</button>
 {{Form::close()}}

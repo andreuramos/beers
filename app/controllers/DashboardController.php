@@ -42,6 +42,27 @@ class DashboardController extends \BaseController {
 		$locality->longitude = Input::get('longitude');
 		$locality->code = Input::get('code');
 		$locality->save();
+		if(Input::hasFile('flag')) {
+
+			$f = Input::file('flag');
+			//Change the image name: s<number_of_service>-<filename>.
+			$filename = 'locality-' . $locality->id . '-flag-' . $f->getClientOriginalName();
+			//Move it to our public folder
+			$f->move(public_path() . '/upload/', $filename);
+			//This is the path to show it on the web
+			$complete_path = '/upload/' . $filename;
+			//create the gallery
+			$image = array(
+				'path'          => $complete_path,
+				'locality_id'   => $locality->id,
+				'beer_id'       => NULL
+			);
+			if($locality->flag()) {
+				$locality->flag()->fill($image)->save();
+			}else {
+				Image::create($image);
+			}
+		}
 		return Redirect::back()->withMessage('Locality created correctly');
 	}
 
