@@ -5,11 +5,15 @@ class Brewer extends \Eloquent {
 	protected $fillable = ['name','url','locality_id'];
 
 	public function locality(){
-		return $this->hasOne('Locality','locality_id');
+		return $this->hasOne('Locality','id','locality_id');
 	}
 
-	private function image(){
-		return $this->belongsTo('Image','brewer_id','id');
+	public function image(){
+		return $this->hasMany('Image','brewer_id','id');
+	}
+
+	public function beer(){
+		return $this->belongsToMany('Beer');
 	}
 
 	public function logo(){
@@ -20,8 +24,9 @@ class Brewer extends \Eloquent {
 	}
 
 	public function logoUrl(){
-		if($this->logo()!==null){
-			return $this->logo()->path;
+		$img = DB::table('image')->where('brewer_id',$this->id)->orderBy('created_at','desc')->first();
+		if($img!==null){
+			return $img->path;
 		}
 		return null;
 	}

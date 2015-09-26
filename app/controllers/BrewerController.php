@@ -46,9 +46,9 @@ class BrewerController extends \BaseController {
 		$brewer->url  = Input::get('url');
 		$brewer->locality_id = $locality->id;
 		$brewer->save();
-		echo "<pre>".print_r(Input::all(),1)."</pre>";exit;
+
 		if(Input::hasFile('logo')) {
-			echo "Has file";
+
 			$f = Input::file('logo');
 			//Change the image name: s<number_of_service>-<filename>.
 			$filename = 'brewer-' . $brewer->id . '-' . $f->getClientOriginalName();
@@ -62,8 +62,11 @@ class BrewerController extends \BaseController {
 				'brewer_id'     => $brewer->id,
 				'beer_id'       => NULL
 			);
-			echo "<pre>".print_r($image,1)."</pre>";exit;
-			Image::create($image);
+			if($brewer->logoUrl()) {
+				$brewer->logo()->fill($image)->save();
+			}else {
+				Image::create($image);
+			}
 		}
 
 		return Redirect::to('/dashboard/brewers');
@@ -92,7 +95,13 @@ class BrewerController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$brewer = Brewer::find($id); $name = $brewer->name;
+		if(!count($brewer->beer)){
+			$brewer->logo()->delete();
+			$brewer->delete();
+			return Redirect::back()->withMessage("Brewer ".$name." deleted successfully");
+		}
+		return Redirect::back()->withMessage("Brewer ".$name." has ".count($brewer->beer)." beers. Delete them first");
 	}
 
 }

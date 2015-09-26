@@ -8,7 +8,7 @@
 {{HTML::script('js/backend/brewer-form.js')}}
 <h1><i class="fa fa-industry"></i>&nbsp; New Brewer</h1>
 
-{{Form::open(['url'=>URL::to('/dashboard/brewers/save'),'method'=>"post",'class'=>"form-hotizontal"])}}
+{{Form::open(['url'=>URL::to('/dashboard/brewers/save'),'method'=>"post",'class'=>"form-hotizontal",'files'=>true])}}
 {{--<form class="form-horizontal" id="style_form" method="POST" url="{}}">--}}
     {{Form::hidden('brewer_id',$brewer->id,['id'=>"brewer_id"])}}
     <div class="container">
@@ -39,12 +39,12 @@
                     <label for="logo">Logo</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-picture-o"></i></div>
-                        {{Form::file('logo',['id'=>'logo'])}}
+                        {{Form::file('logo',['id'=>'logo',$brewer->logoUrl()?"":'required'])}}
 
                     </div>
 
-                    @if($brewer->id)
-                        <img src="{{public_path().'/upload/'.$brewer->logoUrl()}}"/>
+                    @if($brewer->id && $brewer->logoUrl())
+                        {{HTML::image($brewer->logoUrl())}}
                     @endif
                 </div>
             </div>
