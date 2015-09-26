@@ -6,7 +6,7 @@ class Locality extends \Eloquent {
 
 	public function flag(){
 		$res = DB::table('image')->where('locality_id',$this->id)->first();
-		if($res) return Image::find($res[0]->id);
+		if($res) return Image::find($res->id);
 		return null;
 	}
 }

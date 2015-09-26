@@ -6,6 +6,9 @@ This include must be called whith the following params
 <ul class="list-group">
     @foreach($elements as $element)
         <li class="list-group-item clearfix">
+            @if($element_name=="locality" && $element->flag())
+                <img src="{{$element->flag()->path}}" style="height:15px">&nbsp;
+            @endif
             <span>{{$element->name}} </span>
             <div class="btn-group pull-right">
                 @if($element_name=="brewer")

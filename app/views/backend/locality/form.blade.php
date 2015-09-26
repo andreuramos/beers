@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="flag">Flag</label>
         {{Form::file('flag',['id'=>'flag'])}}
-        {{HTML::image('')}}
+        {{HTML::image('/','flag',['id'=>"flag-img",'style'=>"height:50px"])}}
     </div>
     <button type="submit" class="btn btn-success col-lg-12">Save changes</button>
 {{Form::close()}}

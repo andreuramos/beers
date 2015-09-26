@@ -8,8 +8,10 @@ function editElement(id){
         url:'/dashboard/ajax/get'+element+'/'+id,
         success:function(data){
             $.each(data,function(k){
-                if(k=='id'){
-                    $("#"+element+"_id").val(data['id']);
+                if(k=='id') {
+                    $("#" + element + "_id").val(data['id']);
+                }else if(k=='flag'){//locality flag
+                    $('#flag-img').attr('src',data['flag']);
                 }else{
                     $("#"+k).val(data[k]);
                 }
@@ -25,5 +27,6 @@ function editElement(id){
 $(document).ready(function(){
     $("#new-element").click(function(){
         $("form").find('input').val("");
+        $("form").find('img').attr('src','');
     })
 });

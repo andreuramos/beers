@@ -15,7 +15,8 @@ class AjaxController extends \BaseController {
 			'type'=>$locality->type,
 			'latitude'=>$locality->latitude,
 			'longitude'=>$locality->longitude,
-			'code'=>$locality->code
+			'code'=>$locality->code,
+			'flag'=>$locality->flag()?$locality->flag()->path:null
 			//...
 		]);
 	}
