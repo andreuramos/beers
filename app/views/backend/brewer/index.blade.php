@@ -5,7 +5,7 @@
     <a href="{{URL::to('dashboard/brewers/create')}}"><button type="button" id="new-element" class="btn btn-success" data-toggle="modal" data-target="#myModal">
         New Brewer
     </button></a>
-    {{Form::hidden('element_name','locality',['id'=>'brewer'])}}
+    {{Form::hidden('element_name','brewer',['id'=>'element_name'])}}
     <!-- list -->
     <br>
     <div class="row">

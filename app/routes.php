@@ -20,6 +20,14 @@ Route::get('logout','HomeController@logout');
 Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
     Route::get('/','DashboardController@index');
 
+    Route::group(['prefix'=>"beers"],function(){
+        Route::get('/','BeerController@index');
+        Route::get('/create','BeerController@create');
+        Route::get('/edit/{id}','BeerController@edit');
+        Route::get('/delete/{id}','BeerController@destroy');
+        Route::post('save','BeerController@store');
+    });
+
     Route::group(['prefix'=>"brewers"],function(){
         Route::get('/','BrewerController@index');
         Route::get('/create','BrewerController@create');

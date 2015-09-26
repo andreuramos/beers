@@ -6,7 +6,7 @@
             </a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-beer"></i>&nbsp; Beers</a>
+            <a href="{{URL::to('dashboard/beers')}}"><i class="fa fa-beer"></i>&nbsp; Beers</a>
         </li>
         <li>
             <a href="{{URL::to('dashboard/brewers')}}"><i class="fa fa-industry"></i>&nbsp; Brewers</a>
