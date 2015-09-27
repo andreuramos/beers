@@ -24,7 +24,7 @@ class AjaxController extends \BaseController {
 	public function localityAutocomplete($term){
 		$terms = [];
 		foreach(Locality::where('name','like',"%".$term."%")->get() as $locality){
-			$terms[] = $locality->name;
+			$terms[] = ['id'=>$locality->id,'name'=>$locality->name,'pretty_name'=>$locality->completeName()];
 		}
 		return Response::json($terms);
 	}
