@@ -39,7 +39,7 @@ class BrewerController extends \BaseController {
 			$brewer = new Brewer();
 		}
 
-		$locality = Locality::where('name',Input::get('locality'))->first();
+		$locality = Locality::find(Input::get('locality_id'));
 		if(!$locality) return Redirect::back()->withInput()->withMessage('Invalid Locality');
 
 		$brewer->name = Input::get('name');

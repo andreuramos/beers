@@ -11,6 +11,7 @@
 {{Form::open(['url'=>URL::to('/dashboard/brewers/save'),'method'=>"post",'class'=>"form-hotizontal",'files'=>true])}}
 {{--<form class="form-horizontal" id="style_form" method="POST" url="{}}">--}}
     {{Form::hidden('brewer_id',$brewer->id,['id'=>"brewer_id"])}}
+    {{Form::hidden('locality_id',$brewer->locality_id,['id'=>"locality_id"])}}
     <div class="container">
         <div class="row">
             <div class="panel col-lg-6">

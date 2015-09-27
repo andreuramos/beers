@@ -8,7 +8,7 @@
 {{Form::open(['url'=>URL::to('/dashboard/localities/save'),'method'=>"post",'class'=>"form-hotizontal",'files'=>'true'])}}
 {{--<form class="form-horizontal" id="style_form" method="POST" url="{}}">--}}
     {{Form::hidden('locality_id','',['id'=>"locality_id"])}}
-    {{Form::hidden('parent_locality_id','',['id'=>"parent_locality_id"])}}
+    {{Form::hidden('parent_locality_id',$locality->locality_id,['id'=>"parent_locality_id"])}}
     <div class="form-group">
         <label class="control-label" for="name">Name</label>
         <input class="form-control" id="name" name="name" required value="">
