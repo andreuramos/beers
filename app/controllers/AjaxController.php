@@ -6,6 +6,23 @@ class AjaxController extends \BaseController {
 	/* Backend Ajax Functions */
 	/**************************/
 
+	public function brewerAutocomplete($term){
+		$terms = [];
+		foreach(Brewer::where('name','like',"%".$term."%")->get() as $brewer){
+			$country = $brewer->country()?"(".$brewer->country()->name.")":null;
+			$terms[] = ['id'=>$brewer->id,'name'=>$brewer->name,'pretty_name'=>$brewer->name." ".$country];
+		}
+		return Response::json($terms);
+	}
+
+	public function localityAutocomplete($term){
+		$terms = [];
+		foreach(Locality::where('name','like',"%".$term."%")->get() as $locality){
+			$terms[] = ['id'=>$locality->id,'name'=>$locality->name,'pretty_name'=>$locality->completeName()];
+		}
+		return Response::json($terms);
+	}
+
 	public function getLocality($id){
 		$locality = Locality::find($id);
 		return Response::json([
@@ -21,13 +38,6 @@ class AjaxController extends \BaseController {
 		]);
 	}
 
-	public function localityAutocomplete($term){
-		$terms = [];
-		foreach(Locality::where('name','like',"%".$term."%")->get() as $locality){
-			$terms[] = ['id'=>$locality->id,'name'=>$locality->name,'pretty_name'=>$locality->completeName()];
-		}
-		return Response::json($terms);
-	}
 
 	public function styleAutocomplete($term)
 	{

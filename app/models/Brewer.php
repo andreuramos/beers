@@ -30,4 +30,16 @@ class Brewer extends \Eloquent {
 		}
 		return null;
 	}
+
+	/**
+	 * return the country Locality Model Object of this brewer
+	 */
+	public function country(){
+		$locality = $this->locality;
+		if(!$locality || $locality->type=="continent") return null;
+		while($locality->type!="country"){
+			$locality = Locality::find($locality->locality_id);
+		}
+		return $locality;
+	}
 }

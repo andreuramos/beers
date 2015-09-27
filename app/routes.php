@@ -50,6 +50,8 @@ Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
 
 
     Route::group(['prefix'=>'ajax'],function(){
+        Route::get('brewer-autocomplete/{term}','AjaxController@brewerAutocomplete');
+
         Route::get('locality-autocomplete/{term}','AjaxController@localityAutocomplete');
         Route::get('getlocality/{id}','AjaxController@getLocality');
 
