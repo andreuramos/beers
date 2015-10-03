@@ -44,6 +44,7 @@
                     <div class="panel-header"><label for="logo">Stickers</label></div>
                     <div class="panel-body">
                         @if(!$beer->id)
+                            {{Form::hidden('sticker-count',1,['id'=>'sticker-count'])}}
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-ticket"></i></div>
@@ -51,9 +52,11 @@
                                 </div>
                             </div>
                         @else
-                            @foreach($beer->sticker as $sticker)
+                            {{Form::hidden('sticker-count',count($beer->sticker),['id'=>'sticker-count'])}}
+                            @foreach($beer->sticker as $i=>$sticker)
                                 <div class="form-group">
                                     <div class="input-group">
+                                        {{$i}}
                                         <div class="input-group-addon"><i class="fa fa-ticket"></i></div>
                                         {{Form::file('logo',['id'=>'logo',$beer->id?"":'required'])}}
                                     </div>
