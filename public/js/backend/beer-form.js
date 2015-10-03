@@ -22,4 +22,25 @@ $(document).ready(function() {
             event.preventDefault();
         }
     });
+
+    $("#style").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/dashboard/ajax/style-autocomplete/" + request.term,
+                success: function (data) {
+                    response($.map(data, function (el) {
+                        return {
+                            label: el.pretty_name,
+                            value: el.id
+                        };
+                    }));
+                }
+            })
+        },
+        select: function (event, ui) {
+            this.value = ui.item.label;
+            $("#style_id").val(ui.item.value);
+            event.preventDefault();
+        }
+    });
 });

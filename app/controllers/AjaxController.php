@@ -43,7 +43,9 @@ class AjaxController extends \BaseController {
 	{
 		$terms = [];
 		foreach(Style::where('name','like',"%".$term."%")->get() as $style){
-			$terms[] = $style->name;
+			if($style->style_id) $parent = " (".Style::find($style->style_id)->name.")";
+			else $parent = "";
+			$terms[] = ['name'=>$style->name,'id'=>$style->id,'pretty_name'=>$style->name.$parent];
 		}
 		return Response::json($terms);
 	}

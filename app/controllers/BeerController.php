@@ -33,7 +33,24 @@ class BeerController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		if(Input::get('beer_id')){
+			$beer = Beer::find(Input::get('beer_id'));
+			echo "already in db beer";
+		}else{
+			$beer = new Beer();
+			echo "new beer!";
+		}
+		$brewer = Brewer::find(Input::get('brewer_id'));
+		if(!$brewer) return Redirect::back()->withInput()->withMessage('Invalid Brewer');
+		$style = Style::find(Input::get('style_id'));
+		if(!$style) return Redirect::back()->withInput()->withMessage('Invalid Style');
+
+		$beer->name = Input::get('name');
+		$beer->brewer_id = $brewer->id;
+		$beer->style_id = $style->id;
+		$beer->save();
+
+		exit;
 	}
 
 	/**
