@@ -61,7 +61,7 @@ class BeerController extends \BaseController {
 		$beer->brewer()->sync($brewers);
 
 		for($i=1; $i<=Input::get('sticker-count');$i++) {
-			if (Input::hasFile('sicker-'.$i)) {
+			if (Input::hasFile('sticker-'.$i)) {
 				$f = Input::file('sticker-' . $i);
 				//Change the image name: s<number_of_service>-<filename>.
 				$filename = 'beerr-' . $beer->id . '-' . $f->getClientOriginalName();
@@ -130,7 +130,12 @@ class BeerController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		foreach(Image::where('beer_id',$this->id) as $img) $img->delete();
+		$beer = Beer::find($id);
+		foreach(Image::where('beer_id',$beer->id) as $img) $img->delete();
+		foreach(Sticker::where('beer_id',$beer->id) as $sticker) $sticker->delete();
+		$beer->brewer()->sync([]);
+		$beer->delete();
+		return Redirect::to('/dashboard/beers');
 	}
 
 }

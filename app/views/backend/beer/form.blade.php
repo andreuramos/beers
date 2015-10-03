@@ -89,11 +89,13 @@
                             {{Form::hidden('sticker-count',count($beer->sticker),['id'=>'sticker-count'])}}
                             @foreach($beer->sticker as $i=>$sticker)
                                 <div class="form-group">
+                                    {{Form::hidden('sticker-'.$i.'_id',$sticker->id,['id'=>'sticker-'.$i.'_id'])}}
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-ticket"></i></div>
                                         {{Form::file('sticker-'.$i,['id'=>'sticker-'.$i])}}
+                                        <div class="input-group-addon"><a href="#" onclick="addSticker()"><i class="fa fa-plus"></i></a></div>
                                     </div>
-                                    {{HTML::image($sticker->image->path())}}
+                                    {{HTML::image($sticker->image->path,$beer->name,['style'=>"max-width:200px"])}}
                                 </div>
                             @endforeach
                         @endif
