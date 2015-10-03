@@ -40,17 +40,49 @@ class BeerController extends \BaseController {
 			$beer = new Beer();
 			echo "new beer!";
 		}
-		$brewer = Brewer::find(Input::get('brewer_id'));
-		if(!$brewer) return Redirect::back()->withInput()->withMessage('Invalid Brewer');
+
+		$brewers = [];
+		for($i=1;$i<=Input::get('brewer-count');$i++) {
+			$brewer = Brewer::find(Input::get('brewer-'.$i.'_id'));
+			if (!$brewer) return Redirect::back()->withInput()->withMessage('Invalid Brewer '.$i);
+			$brewers[] = $brewer->id;
+		}
 		$style = Style::find(Input::get('style_id'));
 		if(!$style) return Redirect::back()->withInput()->withMessage('Invalid Style');
 
 		$beer->name = Input::get('name');
-		$beer->brewer_id = $brewer->id;
+		//$beer->brewer_id = $brewer->id;
 		$beer->style_id = $style->id;
+		$beer->album = Input::get('album');
+		$beer->page  = Input::get('page');
+		$beer->position = Input::get('position');
 		$beer->save();
 
-		exit;
+		$beer->brewer()->sync($brewers);
+
+		for($i=1; $i<=Input::get('sticker-count');$i++) {
+			if (Input::hasFile('sicker-'.$i)) {
+				$f = Input::file('sticker-' . $i);
+				//Change the image name: s<number_of_service>-<filename>.
+				$filename = 'beerr-' . $beer->id . '-' . $f->getClientOriginalName();
+				//Move it to our public folder
+				$f->move(public_path() . '/upload/', $filename);
+				//This is the path to show it on the web
+				$complete_path = '/upload/' . $filename;
+				//create the gallery
+				$image = array(
+					'path' => $complete_path,
+					'brewer_id' => NULL,
+					'beer_id' => $beer->id,
+				);
+				$img = Image::create($image);
+				Sticker::create([
+					'beer_id'=>$beer->id,
+					'image_id'=>$img->id
+				]);
+			}
+		}
+		return Redirect::to('dashboard/beers');
 	}
 
 	/**
@@ -98,7 +130,7 @@ class BeerController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		foreach(Image::where('beer_id',$this->id) as $img) $img->delete();
 	}
 
 }

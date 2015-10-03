@@ -18,7 +18,7 @@ $(document).ready(function() {
         },
         select: function (event, ui) {
             this.value = ui.item.label;
-            $("#parent_locality_id").val(ui.item.value);
+            $("#locality_id").val(ui.item.value);
             event.preventDefault();
         }
     });
