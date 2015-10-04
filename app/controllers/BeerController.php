@@ -53,6 +53,8 @@ class BeerController extends \BaseController {
 		$beer->name = Input::get('name');
 		//$beer->brewer_id = $brewer->id;
 		$beer->style_id = $style->id;
+		$beer->ratebeer = Input::get('ratebeer_url');
+		$beer->beeradvocate= Input::get('beeradvocate_url');
 		$beer->album = Input::get('album');
 		$beer->page  = Input::get('page');
 		$beer->position = Input::get('position');
@@ -76,10 +78,18 @@ class BeerController extends \BaseController {
 					'beer_id' => $beer->id,
 				);
 				$img = Image::create($image);
-				Sticker::create([
-					'beer_id'=>$beer->id,
-					'image_id'=>$img->id
-				]);
+				if(Input::get('sticker-'.$i.'_id')!=null){
+					$sticker = Sticker::find(Input::get('sticker-'.$i.'_id'));
+					$sticker->img_id = $img->id;
+					$sticker->type = "front";//Input::get('sticker-'.$i.'_type');
+					$sticker->save();
+				}else {
+					Sticker::create([
+						'beer_id' 	=> $beer->id,
+						'image_id' 	=> $img->id,
+						'type'		=> "front"//Input::get('sticker-'.$i.'_type')
+					]);
+				}
 			}
 		}
 		return Redirect::to('dashboard/beers');
@@ -131,8 +141,9 @@ class BeerController extends \BaseController {
 	public function destroy($id)
 	{
 		$beer = Beer::find($id);
-		foreach(Image::where('beer_id',$beer->id) as $img) $img->delete();
-		foreach(Sticker::where('beer_id',$beer->id) as $sticker) $sticker->delete();
+		foreach(Image::where('beer_id',$id) as $img) $img->delete();
+		foreach($beer->image as $image) $image->delete();
+		foreach(Sticker::where('beer_id',$id) as $sticker) $sticker->delete();
 		$beer->brewer()->sync([]);
 		$beer->delete();
 		return Redirect::to('/dashboard/beers');

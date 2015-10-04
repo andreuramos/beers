@@ -57,11 +57,11 @@
                     <label for="url">Websites</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-link"></i></div>
-                        <input class="form-control" id="ratebeer_url" name="rate_beer" value="{{$beer->ratebeer}}" placeholder="Rate Beer">
+                        <input class="form-control" id="ratebeer_url" name="ratebeer_url" value="{{$beer->ratebeer}}" placeholder="Rate Beer">
                     </div><br>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-link"></i></div>
-                        <input class="form-control" id="ratebeer_url" name="rate_beer" value="{{$beer->beeradvocate}}" placeholder="Beer Advocate">
+                        <input class="form-control" id="beeradvocate_url" name="beeradvocate_url" value="{{$beer->beeradvocate}}" placeholder="Beer Advocate">
                     </div>
                 </div>
                 <div class="form-group col-lg-6 col-md-12">
