@@ -16,6 +16,8 @@ Route::get('login','HomeController@login');
 Route::post('dologin','HomeController@dologin');
 Route::get('logout','HomeController@logout');
 
+Route::get('beer/{id}','HomeController@showBeer');
+
 
 Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
     Route::get('/','DashboardController@index');

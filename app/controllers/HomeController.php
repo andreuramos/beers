@@ -43,4 +43,8 @@ class HomeController extends BaseController {
 		return Redirect::to('/');
 	}
 
+	public function showBeer($id){
+		return View::make('frontend.beer',['beer'=>Beer::find($id)]);
+	}
+
 }

@@ -84,12 +84,19 @@ class BeerController extends \BaseController {
 					$sticker->type = "front";//Input::get('sticker-'.$i.'_type');
 					$sticker->save();
 				}else {
-					Sticker::create([
+					$sticker = Sticker::create([
 						'beer_id' 	=> $beer->id,
 						'image_id' 	=> $img->id,
 						'type'		=> "front"//Input::get('sticker-'.$i.'_type')
 					]);
 				}
+				echo "Sticker created ".$sticker->id;
+			}else{
+				if(Input::file('sticker-'.$i)->isValid()) echo "IS FUCKIN VALID";
+				else echo "IS FUCKIN INVALID";
+				echo 'sticker-'.$i." has no file";
+				echo "<pre>".print_r(Input::all(),1)."</pre>";
+				exit;
 			}
 		}
 		return Redirect::to('dashboard/beers');

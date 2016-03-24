@@ -86,8 +86,8 @@
                                 </div>
                             </div>
                         @else
-                            {{Form::hidden('sticker-count',count($beer->sticker),['id'=>'sticker-count'])}}
-                            @foreach($beer->sticker as $i=>$sticker)
+                            {{Form::hidden('sticker-count',count($beer->sticker)?count($beer->sticker):1,['id'=>'sticker-count'])}}
+                            @forelse($beer->sticker as $i=>$sticker)
                                 <div class="form-group">
                                     {{Form::hidden('sticker-'.$i.'_id',$sticker->id,['id'=>'sticker-'.$i.'_id'])}}
                                     <div class="input-group">
@@ -97,14 +97,22 @@
                                     </div>
                                     {{HTML::image($sticker->image->path,$beer->name,['style'=>"max-width:200px"])}}
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="form-group" id="sticker-1">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-ticket"></i></div>
+                                        {{Form::file('sticker-1',['id'=>'sticker-1',$beer->id?"":'required'])}}
+
+                                    </div>
+                                </div>
+                            @endforelse
                         @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-success col-lg-3">Save</button>
+    <button id="beer-submit" type="submit" class="btn btn-success col-lg-3">Save</button>
 {{Form::close()}}
 {{--</form>--}}
 @stop

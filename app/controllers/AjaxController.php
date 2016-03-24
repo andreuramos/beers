@@ -60,4 +60,24 @@ class AjaxController extends \BaseController {
 			'wikipedia'		=>$style->wikipedia_url
 		]);
 	}
+	/*******************/
+	/* Form Validation */
+	/*******************/
+
+	public function validateBeerForm(){
+		$rules = [
+			'name' => 'required',
+			'brewer-1_id' => 'required|exists:brewer,id',
+			'style'	=> 'required|exists:style,name'
+		];
+		for($i=1;$i<=Input::get('sticker-count');$i++){
+			$rules['sticker-'.$i] = 'required|image';
+		}
+		$validator = Validator::make(Input::all(),$rules);
+		if($validator->fails()){
+			return Response::json(['status'=>0]);
+		}else{
+			return Response::json(['status'=>1]);
+		}
+	}
 }
