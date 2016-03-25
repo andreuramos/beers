@@ -60,6 +60,46 @@ class AjaxController extends \BaseController {
 			'wikipedia'		=>$style->wikipedia_url
 		]);
 	}
+
+	public function searchElement($element_name,$text=null){
+		$html = "";
+		$elements = [];
+		$db_elements = DB::table($element_name)->where('name','like',"%".$text."%")->get();
+		foreach($db_elements as $db_element){
+			switch($element_name){
+				case "beer": $elements[] = Beer::find($db_element->id);break;
+				case "brewer": $elements[] = Brewer::find($db_element->id);break;
+				case "locality": $elements[] = Locality::find($db_element->id);break;
+				case "style": $elements[] = Style::find($db_element->id);break;
+			}
+		}
+
+		foreach($elements as $element){
+
+			$html .= '<li class="list-group-item clearfix">';
+			if($element_name=="locality" && $element->flag())
+				$html.='<img src="'.$element->flag()->path-'" style="height:15px">&nbsp;';
+			elseif($element_name=="brewer" && $element->logo())
+				$html.='<img src="'.$element->logo()->path.'" style="height:15px">&nbsp;';
+
+			$html.='<span>'.$element->name.'</span>'.
+			'<div class="btn-group pull-right">';
+			if($element_name=="brewer" || $element_name=="beer")
+					$html.='<a href="'.URL::to('/dashboard/'.$element_name.'s/edit/'.$element->id).'">';
+
+			$html.= '<button type="button" class="btn btn-info" ';
+			if($element_name!="brewer" && $element_name=="beer")
+				$html.='onclick="editElement('.$element->id.')"';
+			$html.='>Edit</button>';
+			if($element_name=="brewer" || $element_name=="beer")
+				$html.='</a>';
+
+			$html .='<a href="'.URL::to('/dashboard/'.$element_name.'s/delete/'.$element->id).'"><button type="button" class="btn btn-danger">Delete</button></a>';
+			$html.='</div></li>';
+		}
+		return Response::json(['html'=>$html]);
+	}
+
 	/*******************/
 	/* Form Validation */
 	/*******************/

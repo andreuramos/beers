@@ -59,5 +59,8 @@ Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
 
         Route::get('style-autocomplete/{term}','AjaxController@styleAutocomplete');
         Route::get('getstyle/{id}','AjaxController@getStyle');
+
+        Route::get('search/{element}','AjaxController@searchElement');
+        Route::get('search/{element}/{text}','AjaxController@searchElement');
     });
 });
