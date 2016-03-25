@@ -78,7 +78,7 @@ class AjaxController extends \BaseController {
 
 			$html .= '<li class="list-group-item clearfix">';
 			if($element_name=="locality" && $element->flag())
-				$html.='<img src="'.$element->flag()->path-'" style="height:15px">&nbsp;';
+				$html.='<img src="'.$element->flag()->path.'" style="height:15px">&nbsp;';
 			elseif($element_name=="brewer" && $element->logo())
 				$html.='<img src="'.$element->logo()->path.'" style="height:15px">&nbsp;';
 
