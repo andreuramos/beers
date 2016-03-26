@@ -7,15 +7,23 @@
                 <div class="col-lg-3 col-md-12">
                     {{HTML::image($beer->mainStickerPath(),$beer->name,['style'=>"max-width:200px"])}}
                 </div>
-                <div class="col-lg-9 col-md-12">
+                <div class="col-lg-5 col-md-12">
                     <ul class="list-group">
-                        <li class="list-group-item"><i class="fa fa-industry"></i>@foreach($beer->brewer as $brewer) {{$brewer->name}} @endforeach</li>
-                        <li class="list-group-item"><i class="fa fa-globe"></i>
+                        <li class="list-group-item">
+                            <i class="fa fa-industry"></i>&nbsp;@foreach($beer->brewer as $brewer) {{$brewer->name}} @endforeach</li>
+                        <li class="list-group-item"><i class="fa fa-globe"></i>&nbsp;
                             @foreach($beer->brewer as $brewer)
                                 <img src="{{$brewer->locality->flag()->path}}" style="max-width: 20px">{{$brewer->locality->completeName()}}
                             @endforeach
                         </li>
+                        <li class="list-group-item">
+                            <i class="fa fa-font">&nbsp;{{$beer->style->name}}</i>
+                        </li>
                     </ul>
+                    {{Form::hidden('beer_id',$beer->id,['id'=>"beer_id"])}}
+                </div>
+                <div class="col-lg-4 col-md-12" id="map" style="height:25%">
+                    <script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
                 </div>
             </div>
         </div>
@@ -27,4 +35,5 @@
         </div>
 
     </div>
+    {{HTML::script('js/single-map.js')}}
 @stop

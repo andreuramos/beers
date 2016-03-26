@@ -20,6 +20,7 @@ Route::get('beer/{id}','HomeController@showBeer');
 
 Route::group(['prefix'=>'ajax'],function(){
     Route::get('beermap/','AjaxController@beerMap');
+    Route::get('beerlocation/{id}','AjaxController@beerLocation');
 });
 
 

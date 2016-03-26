@@ -115,6 +115,19 @@ class AjaxController extends \BaseController {
 		return Response::json(['points'=>$points]);
 	}
 
+	public function beerLocation($id){
+		$beer = Beer::find($id);
+		if(!$beer) return Response::json(['status'=>0]);
+		$locality = $beer->brewer->first()->locality;
+		return Response::json(['status'=>1,
+			'point'=>[
+				'lat'=>$locality->latitude,
+				'lng'=>$locality->longitude,
+				'name'=>$beer->name
+			]
+		]);
+	}
+
 	/*******************/
 	/* Form Validation */
 	/*******************/

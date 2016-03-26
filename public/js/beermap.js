@@ -4,12 +4,12 @@
 function initMap() {
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById('beer-map'), {
-        scrollwheel: true,
+        scrollwheel: true
     });
     $.ajax({
         url:'ajax/beermap',
         success:function(data){
-            alert("printing "+data['points'].length+" points")
+
             var bounds = new google.maps.LatLngBounds();
             for(i=0;i<data['points'].length;i++){
                 var point = data['points'][i];
