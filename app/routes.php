@@ -18,6 +18,10 @@ Route::get('logout','HomeController@logout');
 
 Route::get('beer/{id}','HomeController@showBeer');
 
+Route::group(['prefix'=>'ajax'],function(){
+    Route::get('beermap/','AjaxController@beerMap');
+});
+
 
 Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
     Route::get('/','DashboardController@index');

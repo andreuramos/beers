@@ -100,6 +100,21 @@ class AjaxController extends \BaseController {
 		return Response::json(['html'=>$html]);
 	}
 
+	public function beerMap(){
+		$points = [];
+		foreach(Beer::all() as $beer){
+			$locality = $beer->brewer->first()->locality;
+			$points[] = [
+				'name' => $beer->name,
+				'latlng' => [
+					'lat'=>$locality->latitude,
+					'lng' => $locality->longitude
+				]
+			];
+		}
+		return Response::json(['points'=>$points]);
+	}
+
 	/*******************/
 	/* Form Validation */
 	/*******************/
