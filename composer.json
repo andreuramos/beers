@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
+        "ext-mcrypt": "*",
 		"laravel/framework": "4.2.*"
 	},
   	"require-dev": {
