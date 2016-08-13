@@ -23,7 +23,7 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"php artisan optimize"
+
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
