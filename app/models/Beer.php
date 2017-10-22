@@ -26,6 +26,37 @@ class Beer extends \Eloquent {
 		return Sticker::find($img->id)->image->path;
 	}
 
+	public function getCountry(){
+		$brewed_at = $this->brewer->first()->locality;
+		while($brewed_at->locality_id && $brewed_at->type!="country"){
+			$brewed_at = Locality::find($brewed_at->locality_id);
+		}
+		return $brewed_at;
+	}
+
+	public function getCity(){
+		return $this->brewer->first()->locality;
+	}
+
+	public function getCityStr(){
+		$loc = $this->getCity();
+		$str = "";
+		while($loc->type!="country" && $loc->locality_id){
+			if($str) $str.=", ";
+			$str .= $loc->name;
+			$loc = Locality::find($loc->locality_id);
+		}
+		return $str;
+	}
+
+	public function getFamily(){
+		$style = $this->style;
+		while($style->style_id){
+			$style = Style::find($style->style_id);
+		}
+		return $style;
+	}
+
 	/**
 	 * Selects randomly up to $amount beer records
 	 * @param $amount int

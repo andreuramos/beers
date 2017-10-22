@@ -132,4 +132,39 @@ class DashboardController extends \BaseController {
 		return View::make('backend.account',['user'=>$user]);
 	}
 
+	/**
+	 * Generates an export of the entire collection, including an importable csv file
+	 * and an image set ready to import.
+	 *
+	 */
+	public function export(){
+		$filename = date_create()->format('YmdHis')."_export.csv";
+		$filepath = public_path()."/downloads/".$filename;
+		$handle = fopen($filepath,"w+");
+		$headers = ['brewer','name','style','family','album','page','position','country',
+		'city','year','month','day','purchased','comment','tags'];
+		fputcsv($handle,$headers);
+		$csv = [];
+		foreach(Beer::all() as $beer){
+			$beer_r = [
+				$beer->brewer->first()->name,
+				$beer->name,
+				$beer->style->name,
+				$beer->getFamily()->name,
+				$beer->album,
+				$beer->page,
+				$beer->position,
+				$beer->getCountry()->name,
+				$beer->getCityStr()
+			];
+			fputcsv($handle,$beer_r);
+		}
+		fclose($handle);
+		$headers = [
+			'Content-Type'	=> "text/csv"
+		];
+		return Response::download($filepath,$filename,$headers);
+
+	}
+
 }
