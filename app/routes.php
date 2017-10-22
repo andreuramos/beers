@@ -55,6 +55,11 @@ Route::group(['prefix'=>'dashboard','before'=>'auth'],function(){
         Route::post('/save','DashboardController@saveStyle');
     });
 
+    Route::group(['prefix'=>"account"],function(){
+        Route::get('/','DashboardController@account');
+        Route::get('/export/{format}','DashboardController@export');
+    });
+
 
     Route::group(['prefix'=>'ajax'],function(){
         Route::get('brewer-autocomplete/{term}','AjaxController@brewerAutocomplete');

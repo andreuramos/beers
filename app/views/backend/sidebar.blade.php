@@ -18,7 +18,7 @@
             <a href="{{URL::to('dashboard/styles')}}"><i class="fa fa-font"></i>&nbsp; Styles <span class="badge">{{count(Style::all())}}</a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-user"></i>&nbsp; Account</a>
+            <a href="{{URL::to('dashboard/account')}}"><i class="fa fa-user"></i>&nbsp; Account</a>
         </li>
     </ul>
 </div>

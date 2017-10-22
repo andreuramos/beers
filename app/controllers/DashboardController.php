@@ -124,4 +124,12 @@ class DashboardController extends \BaseController {
 		return Redirect::back();
 	}
 
+	/**
+	 * Index of the account settings page
+	 */
+	public function account(){
+		$user = Auth::user();
+		return View::make('backend.account',['user'=>$user]);
+	}
+
 }
