@@ -22,4 +22,18 @@ $(document).ready(function(){
             event.preventDefault();
         }
     });
+
+    $("#google-btn").click(function(){
+        if(!$("#name").val()){
+            alert("Please, provide a valid locality name");
+        }else{//valid place name
+            locality_name = $("#name").val();
+            $.ajax({
+                url:"https://maps.googleapis.com/maps/api/geocode/json?address="+locality_name,
+                success:function(data){
+                    alert(JSON.stringify(data));
+                }
+            });
+        }
+    });
 });

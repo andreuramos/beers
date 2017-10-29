@@ -11,7 +11,10 @@
     {{Form::hidden('parent_locality_id',$locality->locality_id,['id'=>"parent_locality_id"])}}
     <div class="form-group">
         <label class="control-label" for="name">Name</label>
-        <input class="form-control" id="name" name="name" required value="">
+        <div class="input-group">
+            <input class="form-control" id="name" name="name" required value="">
+            <div class="input-group-addon"><a id="google-btn" href="#"><i class="fa fa-google"></i></a></div>
+        </div>
     </div>
     <div class="form-group">
         <label for="parent_locality">Parent Locality</label>
