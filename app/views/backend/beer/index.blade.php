@@ -2,9 +2,14 @@
 @section('content')
 
     <h1><i class="fa fa-beer"></i>&nbsp; Beers</h1><!-- Button trigger modal -->
-    <a href="{{URL::to('dashboard/beers/create')}}"><button type="button" id="new-element" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-        New Beer
-    </button></a>
+    <div class="row">
+        <a href="{{URL::to('dashboard/beers/create')}}">
+            <button type="button" id="new-element" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                New Beer
+            </button>
+        </a>
+    </div>
+
     {{Form::hidden('element_name','beer',['id'=>'element_name'])}}
     <!-- list -->
     <br>
