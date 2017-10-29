@@ -22,4 +22,36 @@ $(document).ready(function() {
             event.preventDefault();
         }
     });
+
+    $("#new-google-locality").click(function(){
+        $("#GoogleModal").modal();
+    });
+
+    $("#google-search-btn").click(function(){
+        locality_name = $("#google-locality-name").val();
+        if(!locality_name){
+            alert("Invalid name");
+            return
+        }
+        $("#google-results").html('<i class="fa fa-spinner fa-spin"></i>')
+        $.ajax({
+            url:"https://maps.googleapis.com/maps/api/geocode/json?address="+locality_name,
+            success:function(data){
+                if(data['status']=="OK"){
+                    results_li = '';
+                    for(result in data['results']){
+                        address = "";
+                        for(add in result['address_components']){
+                            address += add['long_name']+", ";
+                        }
+                        results_li += '<li>'+address+'</li>';
+                    }
+                    $("#google-results").html(results_li);
+                }else{
+                    $("#google-results").html('<p style="color=red">Error</p>');
+                }
+
+            }
+        });
+    })
 });

@@ -28,6 +28,7 @@
                         <div class="input-group-addon"><i class="fa fa-globe"></i></div>
                         <input class="form-control" id="locality" name="locality" required value="{{$brewer->id?$brewer->locality->name:null}}">
                     </div>
+                    <a href="#" id="new-google-locality"><i class="fa fa-google"></i>&nbsp;Create Locality</a>
                 </div>
                 <div class="form-group">
                     <label for="url">Website</label>
@@ -54,4 +55,36 @@
     <button type="submit" class="btn btn-success col-lg-3">Save</button>
 {{Form::close()}}
 {{--</form>--}}
+
+<div class="modal fade" id="GoogleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">New Locality</h4>
+            </div>
+            <div class="modal-body" style="padding:5%">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="google-locality-name" placeholder="Name"/>
+                            <a id="google-search-btn" class="input-group-addon" href="#"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header"><i class="fa fa-google"></i>&nbsp;Google Results</div>
+                    <div class="panel-body">
+                        <div class="col-lg-6">
+                            <ul id="google-results"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
