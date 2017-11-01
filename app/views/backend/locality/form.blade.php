@@ -32,9 +32,11 @@
     </div>
     <div class="form-group">
         <label for="latitude">Latitude</label>
-        <input class="form-control" id="latitude" name="latitude">
+        <input class="form-control col-lg-6 col-md-6" id="latitude" name="latitude">
         <label for="longitude">Longitude</label>
-        <input class="form-control" id="longitude" name="longitude">
+        <input class="form-control col-lg-6 col-md-6" id="longitude" name="longitude">
+        <button id="coordinates" class="btn"><i class="fa fa-google"></i>&nbsp;Get Coordinates</button>
+        <div id="map-preview"></div>
     </div>
     <div class="form-group">
         <label for="flag">Flag</label>
