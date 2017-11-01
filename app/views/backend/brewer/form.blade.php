@@ -75,9 +75,10 @@
                 <div class="panel">
                     <div class="panel-header"><i class="fa fa-google"></i>&nbsp;Google Results</div>
                     <div class="panel-body">
-                        <div class="col-lg-6">
-                            <ul id="google-results"></ul>
+                        <div class="col-lg-12">
+                            <ul id="google-results" class="list-group"></ul>
                         </div>
+                        <div class="col-lg-12" id="debug"></div>
                     </div>
                 </div>
             </div>

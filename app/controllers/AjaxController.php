@@ -38,6 +38,16 @@ class AjaxController extends \BaseController {
 		]);
 	}
 
+	public function findLocality(){
+		$type = Input::get('type');
+		$name = Input::get('name');
+		$loc = Locality::where('name',$name)->where('type',$type)->first();
+		if($loc){
+			return Response::json(['status'=>1]);
+		}
+		return Response::json(['status'=>0]);
+	}
+
 
 	public function styleAutocomplete($term)
 	{
