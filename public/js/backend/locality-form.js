@@ -47,7 +47,7 @@ $(document).ready(function(){
             locality_name = $("#name").val();
             locality_type = $("#type").val();
             if(locality_type=="country") zoom = 5;
-            else zoom = 10;
+            else zoom = 7;
             $.ajax({
                 url:"https://maps.googleapis.com/maps/api/geocode/json?address="+locality_name,
                 success:function(data){
@@ -57,7 +57,7 @@ $(document).ready(function(){
 
                     $("#latitude").val(lat);
                     $("#longitude").val(lng);
-                    $("#map-preview").css("position:relative;width: 100%;overflow:hidden;");
+                    $("#map-preview").css("position:relative;max-width: 100%;overflow:hidden;");
                     $("#map-preview").html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom='+zoom+'&size=600x300&maptype=roadmap&markers='+lat+','+lng+'&key=AIzaSyAKjldvqrQQsYF2xWV2MMbljih1yFkel7k"/>');
                 }
             });
