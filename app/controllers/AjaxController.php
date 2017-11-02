@@ -48,6 +48,15 @@ class AjaxController extends \BaseController {
 		return Response::json(['status'=>0]);
 	}
 
+	/**
+	 * Searches in the wikipedia API for the flag of the given locality
+	 * @return String JSON Array
+	 */
+	public function findFlag(){
+		$name = Input::get('name');
+		return Response::json(['status'=>0,'msg'=>"Not found"]);
+	}
+
 
 	public function styleAutocomplete($term)
 	{

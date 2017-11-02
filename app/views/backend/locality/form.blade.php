@@ -13,7 +13,6 @@
         <label class="control-label" for="name">Name</label>
         <div class="input-group">
             <input class="form-control" id="name" name="name" required value="">
-            <div class="input-group-addon"><a id="google-btn" href="#"><i class="fa fa-google"></i></a></div>
         </div>
     </div>
     <div class="form-group">
@@ -40,8 +39,27 @@
     </div>
     <div class="form-group">
         <label for="flag">Flag</label>
-        {{Form::file('flag',['id'=>'flag'])}}
-        {{HTML::image('/','flag',['id'=>"flag-img",'style'=>"height:50px"])}}
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-toggle="tab" href="#import">
+                    <i class="fa fa-search"></i>&nbsp;Import
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#file"><i class="fa fa-file"></i>&nbsp;File</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="import" class="tab-pane fade in active">
+                <button class="btn" id="flag-btn"><i class="fa fa-search"></i>&nbsp;Search</button>
+                <img id="flag-result" style="display:none; max-width:100%; height:auto; margin:0 auto"/>
+                <div id="flag-msg" style="display:none"></div>
+            </div>
+            <div id="file" class="tab-pane fade">
+                {{Form::file('flag',['id'=>'flag'])}}
+                {{HTML::image('/','flag',['id'=>"flag-img",'style'=>"height:50px"])}}
+            </div>
+        </div>
     </div>
     <button type="submit" class="btn btn-success col-lg-12">Save changes</button>
 {{Form::close()}}

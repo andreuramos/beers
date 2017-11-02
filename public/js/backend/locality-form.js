@@ -57,14 +57,25 @@ $(document).ready(function(){
 
                     $("#latitude").val(lat);
                     $("#longitude").val(lng);
-                    $("#map-preview").css("position:relative;max-width: 100%;overflow:hidden;");
-                    $("#map-preview").html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom='+zoom+'&size=600x300&maptype=roadmap&markers='+lat+','+lng+'&key=AIzaSyAKjldvqrQQsYF2xWV2MMbljih1yFkel7k"/>');
+                    $("#map-preview").html('<img style="max-width:100%" src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom='+zoom+'&size=600x300&maptype=roadmap&markers='+lat+','+lng+'&key=AIzaSyAKjldvqrQQsYF2xWV2MMbljih1yFkel7k"/>');
                 }
             });
         }
     });
 
-    $("#wiki-flag").click(function(){
-
+    $("#flag-btn").click(function(e){
+        e.preventDefault();
+        locality_name = $("#name").val();
+        $.ajax({
+            url:'/dashboard/ajax/find-flag?name='+locality_name,
+            success:function(data){
+                if(data['status']==1){
+                    $("#flag-result").show().attr('src',data['src']);
+                    $("#flag-msg").show().htm('<a href="'+data['url']+'">'+data['url']+'</a>');
+                }else{
+                    $("#flag-msg").show().html('<p style="color:red">'+data['msg']+'</p>');
+                }
+            }
+        })
     });
 });
