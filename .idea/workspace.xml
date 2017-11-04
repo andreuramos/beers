@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9a181e6c-db32-45b3-8a00-272b2172b2fc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/AjaxController.php" afterPath="$PROJECT_DIR$/app/controllers/AjaxController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/backend/locality/form.blade.php" afterPath="$PROJECT_DIR$/app/views/backend/locality/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/backend/locality-form.js" afterPath="$PROJECT_DIR$/public/js/backend/locality-form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
     </list>
     <ignored path="beers.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/backend/locality/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56401384" vertical-offset="664" max-vertical-offset="1278">
+            <state vertical-scroll-proportion="-12.074074" vertical-offset="664" max-vertical-offset="1278">
               <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
               <folding>
                 <element signature="e#2435#2499#0#HTML" expanded="true" />
@@ -65,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AjaxController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AjaxController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/AjaxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.074074" vertical-offset="574" max-vertical-offset="3150">
-              <caret line="56" column="64" selection-start-line="56" selection-start-column="64" selection-end-line="56" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.5951557" vertical-offset="952" max-vertical-offset="3708">
+              <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -131,9 +128,9 @@
         <option value="$PROJECT_DIR$/app/views/backend/brewer/form.blade.php" />
         <option value="$PROJECT_DIR$/public/js/backend/brewer-form.js" />
         <option value="$PROJECT_DIR$/app/routes.php" />
-        <option value="$PROJECT_DIR$/app/controllers/AjaxController.php" />
         <option value="$PROJECT_DIR$/public/js/backend/locality-form.js" />
         <option value="$PROJECT_DIR$/app/views/backend/locality/form.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/AjaxController.php" />
       </list>
     </option>
   </component>
@@ -881,14 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/AjaxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.074074" vertical-offset="574" max-vertical-offset="3150">
-          <caret line="56" column="64" selection-start-line="56" selection-start-column="64" selection-end-line="56" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/backend/locality-form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="961" max-vertical-offset="1566">
@@ -901,12 +890,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/backend/locality/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56401384" vertical-offset="664" max-vertical-offset="1278">
+        <state vertical-scroll-proportion="-12.074074" vertical-offset="664" max-vertical-offset="1278">
           <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
           <folding>
             <element signature="e#2435#2499#0#HTML" expanded="true" />
             <element signature="e#2537#2557#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/AjaxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5951557" vertical-offset="952" max-vertical-offset="3708">
+          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

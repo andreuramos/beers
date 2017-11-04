@@ -54,6 +54,37 @@ class AjaxController extends \BaseController {
 	 */
 	public function findFlag(){
 		$name = Input::get('name');
+		$base_url = "https://en.wikipedia.org/w/api.php?action=query&format=json";
+		$url = $base_url.'&prop=images&titles='.$name;
+
+		$ch = curl_init($url);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+		$json_res = curl_exec($ch);
+		$res = json_decode($json_res,1);
+		echo "<pre>".print_r($res,1)."</pre>";
+		try{
+			foreach($res['query']['pages'] as $k=>$page){
+				foreach($page['images'] as $j=>$img){
+					$file_url = $base_url.'&prop=pageimages&titles='.$img['title'];
+					echo "REQUESTING FILE URL: $file_url<br>";
+					$ch_img = curl_init($file_url);
+					curl_setopt($ch_img,CURLOPT_RETURNTRANSFER,true);
+					$img_rs = json_decode(curl_exec($ch_img),1);
+					if($img_rs && array_key_exists('query',$img_rs)) {
+						foreach($img_rs['query']['pages'] as $page){
+							echo '<img src="'.$page['thumbnail']['source'].'">';
+						}
+					}else{
+						echo "<pre>".print_r($img_rs,1)."</pre>";
+					}
+				}
+			}
+
+		}catch(Exception $e){
+			return Response::json(['status'=>0,'msg'=>$e->getMessage()]);
+		}
+		exit;
+
 		return Response::json(['status'=>0,'msg'=>"Not found"]);
 	}
 
