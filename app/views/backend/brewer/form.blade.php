@@ -31,6 +31,18 @@
                     <a href="#" id="new-google-locality"><i class="fa fa-google"></i>&nbsp;Create Locality</a>
                 </div>
                 <div class="form-group">
+                    <label for="address">Address</label>
+                    <div class="input-group-addon"><i class="fa fa-marker"></i></div>
+                    <input class="form-control" id="address" name="address" required value="{{$brewer->id?$brewer->address:null}}">
+                </div>
+                <div class="form-group">
+                    <label for="coordinates"><i class="fa fa-globe"></i>&nbsp; Coordiantes</label>
+                    <input class="form-control" id="latitude" name="latitude" value="{{$brewer->id?$brewer->latitude:null}}">
+                    <input class="form-control" id="longitude" name="longitude" value="{{$brewer->id?$brewer->longitude:null}}">
+                    <button class="btn" id="coordinates-btn">Autocomplete Coordinates</button>
+                    <div id="map-preview"></div>
+                </div>
+                <div class="form-group">
                     <label for="url">Website</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-link"></i></div>

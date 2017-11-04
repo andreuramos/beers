@@ -2,7 +2,7 @@
 
 class Brewer extends \Eloquent {
 	protected $table = "brewer";
-	protected $fillable = ['name','url','locality_id'];
+	protected $fillable = ['name','url','locality_id','url','address','latitude','longitude'];
 
 	public function locality(){
 		return $this->hasOne('Locality','id','locality_id');

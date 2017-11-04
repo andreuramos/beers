@@ -27,6 +27,26 @@ $(document).ready(function() {
         $("#GoogleModal").modal();
     });
 
+    $("#coordinates-btn").click(function(e){
+        e.preventDefault();
+        address = $("#address").val();
+        $.ajax({
+            url:"https://maps.googleapis.com/maps/api/geocode/json?address="+address,
+            success:function(data){
+                if(data['status']=="OK"){
+                    result = data['results'][0]['geometry'];
+                    lat = result['location']['lat'];
+                    lng = result['location']['lng'];
+
+                    $("#latitude").val(lat);
+                    $("#longitude").val(lng);
+                    $("#map-preview").html('<img style="max-width:100%" src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=10&size=600x300&maptype=roadmap&markers='+lat+','+lng+'&key=AIzaSyAKjldvqrQQsYF2xWV2MMbljih1yFkel7k"/>');
+
+                }
+            }
+        })
+    });
+
     $("#google-search-btn").click(function(){
         locality_name = $("#google-locality-name").val();
         if(!locality_name){

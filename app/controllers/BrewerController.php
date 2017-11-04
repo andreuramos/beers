@@ -45,6 +45,9 @@ class BrewerController extends \BaseController {
 		$brewer->name = Input::get('name');
 		$brewer->url  = Input::get('url');
 		$brewer->locality_id = $locality->id;
+		$brewer->address = Input::get('address');
+		$brewer->latitude = Input::get('latitude');
+		$brewer->longitude = Input::get('longitude');
 		$brewer->save();
 
 		if(Input::hasFile('logo')) {
