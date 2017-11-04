@@ -17,12 +17,18 @@ This include must be called whith the following params
             @foreach($elements as $element)
                 <li class="list-group-item clearfix">
                     @if($element_name=="locality" && $element->flag())
-                        <img src="{{$element->flag()->path}}" style="height:15px">&nbsp;
+                        <img class="col-lg-1" src="{{$element->flag()->path}}" style="height:auto; max-width:100%">&nbsp;
                     @elseif($element_name=="brewer" && $element->logo())
-                        <img src="{{$element->logo()->path}}" style="height:15px">&nbsp;
+                        <img class="col-lg-1" src="{{$element->logo()->path}}" style="height:auto; max-width:100%">&nbsp;
                     @endif
-                    <span>{{$element->name}} </span>
-                    <div class="btn-group pull-right">
+                    <span class="col-lg-4">{{$element->name}} </span>
+                    <span class="col-lg-2 visible-lg text-muted">
+                        @if($element_name=="brewer")
+                            <img src="{{$element->country()->flag()->path}}" style="width:15px">
+                            &nbsp;{{$element->country()->name}}
+                        @endif
+                    </span>
+                    <div class="col-lg-3 btn-group pull-right">
                         @if($element_name=="brewer" || $element_name=="beer")
                             <a href="{{URL::to('/dashboard/'.$element_name.'s/edit/'.$element->id)}}">
                         @endif

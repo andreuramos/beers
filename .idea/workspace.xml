@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a181e6c-db32-45b3-8a00-272b2172b2fc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2017_11_04_120324_brewer_address_and_coordinates.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Brewer.php" afterPath="$PROJECT_DIR$/app/models/Brewer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BrewerController.php" afterPath="$PROJECT_DIR$/app/controllers/BrewerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/backend/brewer-form.js" afterPath="$PROJECT_DIR$/public/js/backend/brewer-form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/backend/brewer/form.blade.php" afterPath="$PROJECT_DIR$/app/views/backend/brewer/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/crud_list.blade.php" afterPath="$PROJECT_DIR$/app/views/includes/crud_list.blade.php" />
     </list>
     <ignored path="beers.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,12 +39,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <file leaf-file-name="crud_list.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/includes/crud_list.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.555555" vertical-offset="741" max-vertical-offset="1350">
-              <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
-              <folding />
+            <state vertical-scroll-proportion="0.46712804" vertical-offset="162" max-vertical-offset="936">
+              <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,22 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="brewer-form.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/backend/brewer-form.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7140496" vertical-offset="324" max-vertical-offset="2106">
-              <caret line="42" column="154" selection-start-line="42" selection-start-column="154" selection-end-line="42" selection-end-column="154" />
-              <folding>
-                <marker date="1509800630164" expanded="true" signature="4907:4916" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Brewer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Brewer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8518518" vertical-offset="22" max-vertical-offset="900">
+            <state vertical-scroll-proportion="9.259259" vertical-offset="322" max-vertical-offset="900">
               <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
               <folding />
             </state>
@@ -145,7 +132,6 @@
         <option value="$PROJECT_DIR$/app/controllers/LocalityController.php" />
         <option value="$PROJECT_DIR$/app/views/backend/home.blade.php" />
         <option value="$PROJECT_DIR$/app/views/backend/beer/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/includes/crud_list.blade.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/public/js/backend/locality-form.js" />
         <option value="$PROJECT_DIR$/app/views/backend/locality/form.blade.php" />
@@ -155,6 +141,7 @@
         <option value="$PROJECT_DIR$/app/controllers/BrewerController.php" />
         <option value="$PROJECT_DIR$/app/models/Brewer.php" />
         <option value="$PROJECT_DIR$/public/js/backend/brewer-form.js" />
+        <option value="$PROJECT_DIR$/app/views/includes/crud_list.blade.php" />
       </list>
     </option>
   </component>
@@ -293,6 +280,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -580,13 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/backend/brewer/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21799308" vertical-offset="0" max-vertical-offset="578">
-          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2015_10_03_102326_create_table_sticker.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.333333" vertical-offset="0" max-vertical-offset="738">
@@ -771,14 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/includes/crud_list.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="828">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/backend/beer-form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22644629" vertical-offset="1231" max-vertical-offset="1836">
@@ -848,6 +842,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/backend/brewer/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="486">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/backend/brewer-form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7140496" vertical-offset="324" max-vertical-offset="2106">
+          <caret line="42" column="154" selection-start-line="42" selection-start-column="154" selection-end-line="42" selection-end-column="154" />
+          <folding>
+            <marker date="1509800630164" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/BrewerController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-32.666668" vertical-offset="0" max-vertical-offset="2070">
@@ -858,18 +870,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Brewer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8518518" vertical-offset="22" max-vertical-offset="900">
+        <state vertical-scroll-proportion="9.259259" vertical-offset="322" max-vertical-offset="900">
           <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/backend/brewer-form.js">
+    <entry file="file://$PROJECT_DIR$/app/views/includes/crud_list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7140496" vertical-offset="324" max-vertical-offset="2106">
-          <caret line="42" column="154" selection-start-line="42" selection-start-column="154" selection-end-line="42" selection-end-column="154" />
+        <state vertical-scroll-proportion="0.46712804" vertical-offset="162" max-vertical-offset="936">
+          <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
           <folding>
-            <marker date="1509800630164" expanded="true" signature="4907:4916" placeholder="..." />
+            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#1;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
