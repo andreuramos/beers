@@ -47,4 +47,8 @@ class HomeController extends BaseController {
 		return View::make('frontend.beer',['beer'=>Beer::find($id)]);
 	}
 
+	public function showBrewer($id){
+		return View::make('frontend.brewer',['brewer'=>Brewer::find($id)]);
+	}
+
 }

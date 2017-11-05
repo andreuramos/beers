@@ -17,6 +17,9 @@ Route::post('dologin','HomeController@dologin');
 Route::get('logout','HomeController@logout');
 
 Route::get('beer/{id}','HomeController@showBeer');
+Route::get('brewer/{id}','HomeController@showBrewer');
+Route::get('locality/{id}','HomeController@showLocality');
+Route::get('style/{id}','HomeController@showStyle');
 
 Route::group(['prefix'=>'ajax'],function(){
     Route::get('beermap/','AjaxController@beerMap');

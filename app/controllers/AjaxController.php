@@ -153,12 +153,12 @@ class AjaxController extends \BaseController {
 	public function beerMap(){
 		$points = [];
 		foreach(Beer::all() as $beer){
-			$locality = $beer->brewer->first()->locality;
+			$brewer = $beer->brewer->first();
 			$points[] = [
 				'name' => $beer->name,
 				'latlng' => [
-					'lat'=>$locality->latitude,
-					'lng' => $locality->longitude
+					'lat'=>$brewer->latitude,
+					'lng' => $brewer->longitude
 				]
 			];
 		}
