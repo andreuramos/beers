@@ -42,4 +42,15 @@ class Brewer extends \Eloquent {
 		}
 		return $locality;
 	}
+
+	public function localityHierarchy(){
+		$hierarchy = [];
+		$locality = Locality::find($this->locality_id);
+		$hierarchy[] = $locality;
+		while($locality->locality_id){
+			$locality = Locality::find($locality->locality_id);
+			$hierarchy[] = $locality;
+		}
+		return $hierarchy;
+	}
 }

@@ -10,14 +10,14 @@
                 <div class="col-lg-5 col-md-12">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <i class="fa fa-industry"></i>&nbsp;@foreach($beer->brewer as $brewer) {{$brewer->name}} @endforeach</li>
+                            <i class="fa fa-industry"></i>&nbsp;@foreach($beer->brewer as $brewer) <a href="/brewer/{{$brewer->id}}">{{$brewer->name}}</a> @endforeach</li>
                         <li class="list-group-item"><i class="fa fa-globe"></i>&nbsp;
                             @foreach($beer->brewer as $brewer)
                                 <img src="{{$brewer->locality->flag()->path}}" style="max-width: 20px">{{$brewer->locality->completeName()}}
                             @endforeach
                         </li>
                         <li class="list-group-item">
-                            <i class="fa fa-font">&nbsp;{{$beer->style->name}}</i>
+                            <i class="fa fa-font">&nbsp;<a href="/style/{{$beer->style_id}}">{{$beer->style->name}}</a></i>
                         </li>
                     </ul>
                     {{Form::hidden('beer_id',$beer->id,['id'=>"beer_id"])}}
