@@ -13,7 +13,9 @@
                             <i class="fa fa-industry"></i>&nbsp;@foreach($beer->brewer as $brewer) <a href="/brewer/{{$brewer->id}}">{{$brewer->name}}</a> @endforeach</li>
                         <li class="list-group-item"><i class="fa fa-globe"></i>&nbsp;
                             @foreach($beer->brewer as $brewer)
-                                <img src="{{$brewer->locality->flag()->path}}" style="max-width: 20px">{{$brewer->locality->completeName()}}
+                                @foreach($brewer->localityHierarchy() as $locality)
+                                    <a href="/locality/{{$locality->id}}">{{$locality->name}}</a>&nbsp;/
+                                @endforeach
                             @endforeach
                         </li>
                         <li class="list-group-item">

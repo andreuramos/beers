@@ -51,4 +51,8 @@ class HomeController extends BaseController {
 		return View::make('frontend.brewer',['brewer'=>Brewer::find($id)]);
 	}
 
+	public function showLocality($id){
+		return View::make('frontend.locality',['locality'=>Locality::find($id)]);
+	}
+
 }

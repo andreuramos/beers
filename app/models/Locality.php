@@ -25,4 +25,52 @@ class Locality extends \Eloquent {
 		}
 		return $name;
 	}
+
+	public function hierarchy(){
+		$hierarchy = [];
+		$parent = $this;
+		while($parent->locality_id){
+			$parent = Self::find($parent->locality_id);
+			$hierarchy[] = $parent;
+		}
+		return $hierarchy;
+	}
+
+	public function descendants(){
+		$descendants = [];
+		$db_desc = DB::table('locality')->where('locality_id',$this->id)->get();
+		foreach($db_desc as $dsc){
+			$descendants[] = Self::find($dsc->id);
+		}
+		return $descendants;
+	}
+
+	public function brewers(){
+		$brewers = [];
+		$db_brewers = DB::table('brewer')->where('locality_id',$this->id)->get();
+		foreach($db_brewers as $brewer){
+			$brewers[] = Brewer::find($brewer->id);
+		}
+		//recursion
+		foreach($this->descendants() as $desc){
+			foreach($desc->brewers() as $brewer) $brewers[] = $brewer;
+		}
+		return $brewers;
+	}
+
+	public function beers(){
+		$beer_ids = [];
+		foreach($this->brewers() as $brewer){
+			foreach($brewer->beer as $beer){
+				if(!in_array($beer->id,$beer_ids)){
+					$beer_ids[] = $beer->id;
+				}
+			}
+		}
+		$beers = [];
+		foreach($beer_ids as $b_id){
+			$beers[] = Beer::find($b_id);
+		}
+		return $beers;
+	}
 }
