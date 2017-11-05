@@ -34,6 +34,10 @@ class Beer extends \Eloquent {
 		return $brewed_at;
 	}
 
+	public function country(){
+		return $this->getCountry();
+	}
+
 	public function getCity(){
 		return $this->brewer->first()->locality;
 	}

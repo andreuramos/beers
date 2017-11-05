@@ -23,7 +23,7 @@ This include must be called whith the following params
                     @endif
                     <span class="col-lg-4">{{$element->name}} </span>
                     <span class="col-lg-2 visible-lg text-muted">
-                        @if($element_name=="brewer")
+                        @if($element_name=="brewer" || $element_name=="beer")
                             <img src="{{$element->country()->flag()->path}}" style="width:15px">
                             &nbsp;{{$element->country()->name}}
                         @endif
