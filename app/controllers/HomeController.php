@@ -55,4 +55,8 @@ class HomeController extends BaseController {
 		return View::make('frontend.locality',['locality'=>Locality::find($id)]);
 	}
 
+	public function showStyle($id){
+		return View::make('frontend.style',['style'=>Style::find($id)]);
+	}
+
 }

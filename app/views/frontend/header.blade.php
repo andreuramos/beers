@@ -14,7 +14,11 @@
                 <li><a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
                 <li><a href="{{URL::to('/search')}}">Search</a></li>
                 <li><a href="{{URL::to('/albums')}}">Albums</a></li>
-                <li><a href="{{URL::to('login')}}">Login</a></li>
+                @if(Auth::user())
+                    <li><a href="{{URL::to('/dashboard')}}">Admin</a></li>
+                @else
+                    <li><a href="{{URL::to('login')}}">Login</a></li>
+                @endif
             </ul>
         </div>
 
