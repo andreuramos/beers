@@ -21,7 +21,11 @@ This include must be called whith the following params
                     @elseif($element_name=="brewer" && $element->logo())
                         <img class="col-lg-1" src="{{$element->logo()->path}}" style="height:auto; max-width:100%">&nbsp;
                     @endif
-                    <span class="col-lg-4">{{$element->name}} </span>
+                    <span class="col-lg-4">{{$element->name}}
+                    @if($element_name=="locality")
+                        &nbsp;<p class="text-muted">({{$element->type}})</p>
+                    @endif
+                    </span>
                     <span class="col-lg-2 visible-lg text-muted">
                         @if($element_name=="brewer" || $element_name=="beer")
                             <img src="{{$element->country()->flag()->path}}" style="width:15px">

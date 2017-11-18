@@ -4,6 +4,10 @@ class Locality extends \Eloquent {
 	protected $table="locality";
 	protected $fillable = [];
 
+	public static function countCountries(){
+		return DB::table('locality')->where('type','country')->count();
+	}
+
 	/**
 	 * returns the flag Image Model Object if any
 	 * @return null

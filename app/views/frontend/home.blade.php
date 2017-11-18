@@ -11,9 +11,13 @@
         <div clas="col-lg-12" id="home-search-results"></div>
     </div>
 
-    <div class="col-lg-4 col-md-12">
-        <h2 class="text-center">Beer Count</h2>
+    <div class="col-lg-2 col-md-6 col-sm-12">
         <h1 class="text-center">{{Beer::count()}}</h1>
+        <h2 class="text-center">Beers</h2>
+    </div>
+    <div class="col-lg-2 col-md-6 col-sm-12">
+        <h1 class="text-center">{{Locality::countCountries()}}</h1>
+        <h2 class="text-center">Countries</h2>
     </div>
 </div>
 
