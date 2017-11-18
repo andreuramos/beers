@@ -27,6 +27,7 @@
                 <div class="col-lg-4 col-md-12" id="map" style="height:25%">
                     <script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
                 </div>
+                {{Form::hidden('map_type','beer',['id'=>'map_type'])}}
             </div>
         </div>
         <div class="row">

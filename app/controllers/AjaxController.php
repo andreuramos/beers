@@ -165,16 +165,18 @@ class AjaxController extends \BaseController {
 		return Response::json(['points'=>$points]);
 	}
 
-	public function beerLocation($id){
+	public function mapBeer($id){
 		$beer = Beer::find($id);
 		if(!$beer) return Response::json(['status'=>0]);
-		$locality = $beer->brewer->first()->locality;
+		$brewer = $beer->brewer->first();
+		$points = [];
+		$points[] = [
+			'lat' => $brewer->latitude,
+			'lng' => $brewer->longitude,
+			'name'=> $beer->name
+		];
 		return Response::json(['status'=>1,
-			'point'=>[
-				'lat'=>$locality->latitude,
-				'lng'=>$locality->longitude,
-				'name'=>$beer->name
-			]
+			'points'=>$points
 		]);
 	}
 

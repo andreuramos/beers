@@ -23,8 +23,10 @@ Route::get('style/{id}','HomeController@showStyle');
 
 Route::group(['prefix'=>'ajax'],function(){
     Route::get('beermap/','AjaxController@beerMap');
-    Route::get('beerlocation/{id}','AjaxController@beerLocation');
     Route::get('findbeer','AjaxController@findbeer');
+    Route::group(['prefix'=>'map'],function(){
+        Route::get('beer/{id}','AjaxController@mapBeer');
+    });
 });
 
 
