@@ -178,6 +178,24 @@ class AjaxController extends \BaseController {
 		]);
 	}
 
+	public function findbeer(){
+		$text = Input::get('text');
+		$results = [];
+		foreach(Beer::search($text) as $beer){
+			$country = $beer->getCountry();
+			$results[] = [
+				'id'	=> $beer->id,
+				'name'	=> $beer->name,
+				'flag'	=> $country->flag()?$country->flag()->path:null,
+				'city'	=> $beer->getCity()->name
+			];
+		}
+		return Response::json([
+			'status'=>1,
+			'beers' => $results
+		]);
+	}
+
 	/*******************/
 	/* Form Validation */
 	/*******************/

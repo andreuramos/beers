@@ -75,4 +75,18 @@ class Beer extends \Eloquent {
 		}
 		return $beers;
 	}
+
+	/**
+	 * Searches for beers that match with the given text
+	 * @return Array of Beer objects
+	 */
+	public static function search($text){
+		$beers = [];
+		$db_beers = DB::table('beer')->where('name','like',"%".$text."%")->get();
+		foreach($db_beers as $db_beer){
+			$beers[] = self::find($db_beer->id);
+		}
+		return $beers;
+
+	}
 }
