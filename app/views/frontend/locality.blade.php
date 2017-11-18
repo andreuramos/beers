@@ -5,14 +5,18 @@
         <div class="row">
             <div class="container">
                 <div class="col-lg-3 col-md-12">
-                    {{HTML::image($locality->flag()->path,$locality->name,['style'=>"max-width:200px"])}}
+                    @if($locality->flag())
+                        {{HTML::image($locality->flag()->path,$locality->name,['style'=>"max-width:200px"])}}
+                    @endif
                 </div>
                 <div class="col-lg-5 col-md-12">
                     <ul class="list-group">
                         @foreach($locality->hierarchy() as $parent_locality)
                         <li class="list-group-item">
                             <i class="fa fa-globe"></i>&nbsp;
-                            <img src="{{$parent_locality->flag()->path}}" style="max-width:20px">&nbsp;
+                            @if($parent_locality->flag())
+                                <img src="{{$parent_locality->flag()->path}}" style="max-width:20px">&nbsp;
+                            @endif
                             <a href="/locality/{{$parent_locality->id}}">{{$parent_locality->name}}</a>
                         </li>
                         @endforeach
