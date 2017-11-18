@@ -30,7 +30,8 @@ jQuery(document).ready(function() {
                             results += '</li>';
                         }
                         if(data['beers'].length==0){
-                            results += '<li class="list-group-item"><p class="text-muted">No results</p></li>';
+                            results += '<li class="list-group-item clearfix"><p class="col-lg-6 text-left text-muted">No results</p>'+
+                            '<a href="/search" class="text-right col-lg-6">Advanced Search >></a></li>';
                         }
                         results += '</ul>';
                         $("#home-search-results").html(results);
