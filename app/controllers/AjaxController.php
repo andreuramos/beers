@@ -165,6 +165,12 @@ class AjaxController extends \BaseController {
 		return Response::json(['points'=>$points]);
 	}
 
+	/**
+	 * Returns the coords of where the specified beer is produced
+	 * (its first brewer location)
+	 * @param $id int Beer ID
+	 * @return mixed
+	 */
 	public function mapBeer($id){
 		$beer = Beer::find($id);
 		if(!$beer) return Response::json(['status'=>0]);
@@ -177,6 +183,44 @@ class AjaxController extends \BaseController {
 		];
 		return Response::json(['status'=>1,
 			'points'=>$points
+		]);
+	}
+
+	/**
+	 * Returns the location of a Brewer
+	 * @param $id int Brewer ID
+	 * @return mixed
+	 */
+	public function mapBrewer($id){
+		$brewer = Brewer::find($id);
+		if(!$brewer) return Response::json(['status'=>0]);
+		$points = [];
+		$points[] = [
+			'name'	=> $brewer->name,
+			'lat'	=> $brewer->latitude,
+			'lng'	=> $brewer->longitude
+		];
+		return Response::json([
+			'status'	=> 1,
+			'points'	=> $points
+		]);
+	}
+
+	public function mapLocality($id){
+		$locality = Locality::find($id);
+		if(!$locality) return Response::json(['status'=>0]);
+		$brewers = $locality->brewers();
+		$points = [];
+		foreach($brewers as $brewer){
+			$points[] = [
+				'lat'	=> $brewer->latitude,
+				'lng'	=> $brewer->longitude,
+				'name'	=> $brewer->name
+			];
+		}
+		return Response::json([
+			'status'	=> 1,
+			'points'	=> $points
 		]);
 	}
 

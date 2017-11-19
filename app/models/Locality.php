@@ -49,6 +49,11 @@ class Locality extends \Eloquent {
 		return $descendants;
 	}
 
+	/**
+	 * Returns all the brewers associated to this locality or one of
+	 * its descendants
+	 * @return array of Brewer objects
+	 */
 	public function brewers(){
 		$brewers = [];
 		$db_brewers = DB::table('brewer')->where('locality_id',$this->id)->get();

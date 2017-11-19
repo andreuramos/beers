@@ -24,8 +24,9 @@
                     {{Form::hidden('locality_id',$locality->id,['id'=>"locality_id"])}}
                 </div>
                 <div class="col-lg-4 col-md-12" id="map" style="height:25%">
-                    <script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+                    <script src="https://maps.google.com/maps/api/js?key=AIzaSyBlVdNIYCO6u-5EyusTtX18tkfshUm9-1Y&sensor=false&v=3" type="text/javascript"></script>
                 </div>
+                {{Form::hidden('map_type','locality',['id'=>'map_type'])}}
             </div>
         </div>
         <div class="row">

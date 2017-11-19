@@ -26,6 +26,8 @@ Route::group(['prefix'=>'ajax'],function(){
     Route::get('findbeer','AjaxController@findbeer');
     Route::group(['prefix'=>'map'],function(){
         Route::get('beer/{id}','AjaxController@mapBeer');
+        Route::get('brewer/{id}','AjaxController@mapBrewer');
+        Route::get('locality/{id}','AjaxController@mapLocality');
     });
 });
 
