@@ -36,12 +36,16 @@ function initMap() {
                     map: map,
                     title: point['name']
                 });
-                bounds.extend(marker.getPosition());
+                if(data['points'].length>1){
+                    bounds.extend(marker.getPosition());
+                }
             }
-            if(data['point'].length>1){
+            if(data['points'].length>1){
                 map.fitBounds(bounds);
             }else{
-                //map.fitBounds(bounds);
+                lat = data['points'][0]['lat'];
+                lng = data['points'][0]['lng'];
+                map.setCenter(new google.maps.LatLng(lat, lng));
                 map.setZoom(8);
             }
 
