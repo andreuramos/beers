@@ -25,7 +25,7 @@
                     {{Form::hidden('beer_id',$beer->id,['id'=>"beer_id"])}}
                 </div>
                 <div class="col-lg-4 col-md-12" id="map" style="height:25%">
-                    <script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+                    <script src="https://maps.google.com/maps/api/js?jey=AIzaSyAKjldvqrQQsYF2xWV2MMbljih1yFkel7k&sensor=false" type="text/javascript"></script>
                 </div>
                 {{Form::hidden('map_type','beer',['id'=>'map_type'])}}
             </div>

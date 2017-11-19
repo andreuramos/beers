@@ -7,7 +7,8 @@
 function initMap() {
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById('map'), {
-        scrollwheel: true
+        scrollwheel: true,
+        zoom:13
     });
 
     var map_type = $("#map_type").val();
@@ -23,12 +24,13 @@ function initMap() {
     $.ajax({
         url:'/ajax/map/'+element_name+'/'+id,
         success:function(data){
-
+            alert("ajax success");
             var bounds = new google.maps.LatLngBounds();
             for(i=0;i<data['points'].length;i++){
                 var point = data['points'][i];
-                var lat = parseInt(point['latlng']['lat']);
-                var lng = parseInt(point['latlng']['lng']);
+                var lat = parseFloat(point['lat']);
+                var lng = parseFloat(point['lng']);
+                alert("placing point "+i+" at "+lat+","+lng);
                 var marker = new google.maps.Marker({
                     position: {lat: lat, lng: lng},
                     map: map,
@@ -36,7 +38,13 @@ function initMap() {
                 });
                 bounds.extend(marker.getPosition());
             }
-            map.fitBounds(bounds);
+            if(data['point'].length>1){
+                map.fitBounds(bounds);
+            }else{
+                //map.fitBounds(bounds);
+                map.setZoom(8);
+            }
+
         }
     });
 }
