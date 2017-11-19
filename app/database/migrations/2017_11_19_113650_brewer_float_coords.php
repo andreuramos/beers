@@ -18,8 +18,8 @@ class BrewerFloatCoords extends Migration {
 
 		});
 		Schema::table('brewer',function(Blueprint $t){
-			$t->float('latitude',10,8);
-			$t->float('longitude',10,8);
+			$t->float('latitude',11,8);
+			$t->float('longitude',11,8);
 		});
 	}
 
